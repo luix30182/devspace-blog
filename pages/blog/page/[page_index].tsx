@@ -7,7 +7,17 @@ import Pagination from '@/components/Pagination';
 import { getPosts } from '@/lib/post';
 import CategoryList from '@/components/CategoryList';
 
-const BLogPage = ({ posts, numPages, currentPage, categories }) => {
+const BLogPage = ({
+  posts,
+  numPages,
+  currentPage,
+  categories
+}: {
+  posts: Array<any>;
+  numPages: number;
+  currentPage: any;
+  categories: any;
+}) => {
   return (
     <Layout>
       <div className="flex justify-between">
@@ -49,14 +59,14 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: { params: any }) {
   const page = parseInt(params?.page_index ?? 1);
   const files = fs.readdirSync(path.join('posts'));
 
   const posts = getPosts();
 
   //GET CATEGORIES FOR SIDEBAR
-  const categories = posts.map(post => post.frontmatter.category);
+  const categories: Array<any> = posts.map(post => post.frontmatter.category);
   const uniqueCategories = [...new Set(categories)];
 
   const numPages = Math.ceil(files.length / POST_PER_PAGE);

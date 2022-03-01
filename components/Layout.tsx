@@ -2,7 +2,17 @@ import Head from 'next/head';
 import Header from './Header';
 import Search from './Search';
 
-export default function Layout({ title, keywords, description, children }) {
+export default function Layout({
+  title,
+  keywords,
+  description,
+  children
+}: {
+  title: string;
+  keywords: string;
+  description: string;
+  children: any;
+}) {
   return (
     <div>
       <Head>

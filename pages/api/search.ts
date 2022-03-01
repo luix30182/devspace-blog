@@ -36,11 +36,16 @@ export default function handler(
     });
   }
 
-  const results = posts.filter(
-    ({ frontmatter: { title, excerpt, category } }) =>
-      title.toLowerCase().indexOf(req.query.q) != -1 ||
-      excerpt.toLowerCase().indexOf(req.query.q) != -1 ||
-      category.toLowerCase().indexOf(req.query.q) != -1
+  const results: any = posts.filter(
+    ({
+      frontmatter: { title, excerpt, category }
+    }: {
+      frontmatter: { title: string; excerpt: string; category: string };
+    }) =>
+      title.toLowerCase().indexOf(req.query.q as string) != -1 ||
+      excerpt.toLowerCase().indexOf(req.query.q as string) != -1 ||
+      category.toLowerCase().indexOf(req.query.q as string) != -1
   );
+
   res.status(200).json(JSON.stringify({ results }));
 }

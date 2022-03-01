@@ -1,6 +1,12 @@
 import Link from 'next/link';
 
-export default function Pagination({ currentpage, numPages }) {
+export default function Pagination({
+  currentpage,
+  numPages
+}: {
+  currentpage: number;
+  numPages: number;
+}) {
   const isFirst = currentpage === 1;
   const isLast = currentpage === numPages;
   const prevPage = `/blog/page/${currentpage - 1}`;

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-export default function CategoryList({ categories }) {
+export default function CategoryList({ categories }: { categories: any }) {
   return (
     <div className="w-full p-5 bg-white rounded-lg shadow-md mt-6">
       <h3 className="text-2xl bg-gray-800 text-white p-3 rounded">
@@ -9,7 +9,7 @@ export default function CategoryList({ categories }) {
       </h3>
 
       <ul className="divide-y divide-gray-300">
-        {categories.map((category, index) => (
+        {categories.map((category: any, index: number) => (
           <Link key={index} href={`/blog/category/${category.toLowerCase()}`}>
             <li className="p-4 cursor-pointer hover:bg-gray-50">{category}</li>
           </Link>

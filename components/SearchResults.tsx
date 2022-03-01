@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from './Post';
 
-export default function SearchResults({ results }) {
+export default function SearchResults({ results }: { results: Array<any> }) {
   if (results.length === 0) return <></>;
   return (
     <div className="absolute top-20 right-0 md:right-10 z-10 border-4 border-gray-500 bg-white text-black w-full md:w-6/12 rounded-2xl">

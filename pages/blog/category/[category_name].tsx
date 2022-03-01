@@ -1,13 +1,20 @@
 import fs from 'fs';
 import path from 'path';
 import Layout from '@/components/Layout';
-import Link from 'next/link';
 import Post from '@/components/Post';
 import { getPosts } from '@/lib/post';
 import matter from 'gray-matter';
 import CategoryList from '@/components/CategoryList';
 
-const CategoryPage = ({ posts, categoryName, categories }) => {
+const CategoryPage = ({
+  posts,
+  categoryName,
+  categories
+}: {
+  posts: any;
+  categoryName: string;
+  categories: any;
+}) => {
   return (
     <Layout>
       <div className="flex justify-between">
@@ -17,7 +24,7 @@ const CategoryPage = ({ posts, categoryName, categories }) => {
           </h1>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {posts.map((post, i) => (
+            {posts.map((post: any, i: number) => (
               <Post key={i} post={post} />
             ))}
           </div>
@@ -57,11 +64,15 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params: { category_name } }) {
+export async function getStaticProps({
+  params: { category_name }
+}: {
+  params: { category_name: string };
+}) {
   const posts = getPosts();
 
   //GET CATEGORIES FOR SIDEBAR
-  const categories = posts.map(post => post.frontmatter.category);
+  const categories: Array<any> = posts.map(post => post.frontmatter.category);
   const uniqueCategories = [...new Set(categories)];
 
   const categoryPosts = posts.filter(
