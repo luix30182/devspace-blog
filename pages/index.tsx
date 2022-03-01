@@ -3,7 +3,7 @@ import Layout from '@/components/Layout';
 import Post from '@/components/Post';
 import { getPosts } from '@/lib/post';
 
-const Home = ({ posts }) => {
+const Home = ({ posts }: { posts: Array<any> }) => {
   return (
     <Layout>
       <h1 className="text-5xl border-b-4 p-5 font-bold">Latest Post</h1>
